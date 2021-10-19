@@ -7,6 +7,8 @@ from selenium.webdriver.support.ui  import Select
 # WEBSCRAPING
 # ----------- 
 
+lista_de_jogos = []
+
 navegador = webdriver.Chrome(executable_path=os.path.abspath('chromedriver'))
 
 url = navegador.get('https://www.cbf.com.br/')
@@ -18,4 +20,12 @@ jogosHojeTdos = navegador.find_element_by_xpath('//*[@id="app"]/header/div/nav/u
 # selecionando o campionanto dentro de um select 
 jogosHojeSerieA = navegador.find_element_by_id('competition-filter')
 selectElement = Select(jogosHojeSerieA)
-selectElement.select_by_value('Campeonato Brasileiro de Futebol - Série A 2021')
+
+
+selectElement.select_by_index(0)
+jogos = navegador.find_elements_by_class_name('box')
+
+for i in jogos:
+    print(i.text)
+    print(20 * '-')
+
