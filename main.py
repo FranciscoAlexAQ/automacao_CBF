@@ -45,7 +45,6 @@ for i in jogos:
  fazendo uma sequência de condições para acessar os jogos
   e a horas e adicionando ao dicionário
 '''
-
 for i in aux:
     info = str(i).split()
 
@@ -63,7 +62,6 @@ for i in aux:
             time2 = info[6] 
             dados['times'].append(time1 + ' x ' + time2)
             dados['horario'].append(info[5])
-
     elif info[0] and info[1] != '-':
         time1 = info[0] + ' ' + info[1]
         if info[5] != '-' and info[6] != '-' and info[7] != '-':
@@ -92,6 +90,9 @@ for i in aux:
             time2 = info[4] 
             dados['times'].append(time1 + ' x ' + time2)
             dados['horario'].append(info[3])
+
+# fechando o navegador
+navegador.close()
 
 # USANDO PANDAS
 df = pd.DataFrame(dados)
@@ -124,7 +125,6 @@ message.attach(MIMEText('''
     Olá! Segue a lista dos jogos do dia de hoje :)
 ''', 'plain'))
 
-
 # parte do anexo
 filename = 'jogos_do_dia'
 attachment = open('jogos_do_dia', 'rb')
@@ -144,5 +144,5 @@ try:
 except Exception as e:
     print(e)
 
-# fechando o servidor
+# fechando o servidor de email
 server.quit()
